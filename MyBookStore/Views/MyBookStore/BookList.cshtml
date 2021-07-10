@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MyBookStore.Models.Book>
+
+@{
+    ViewBag.Title = "BookList";
+}
+
+<h2><b>Список книг в базе данных</b></h2>
+
+<p>
+    @Html.ActionLink("Добавить книгу в базу", "AddBook")
+</p>
+<table class="table">
+    <tr>
+        <th><label> Книга </label>
+            @*@Html.DisplayNameFor(model => model.Name)*@
+        </th>
+        <th><label> Автор </label>
+            @*@Html.DisplayNameFor(model => model.Author)*@
+        </th>
+        <th><label> Цена </label>
+            @*@Html.DisplayNameFor(model => model.Price)*@
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Изменить", "EditBook", new { id=item.Id }) |
+            @Html.ActionLink("Детали", "DetailsBook", new { id=item.Id }) |
+            @Html.ActionLink("Удалить", "DeleteBook", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

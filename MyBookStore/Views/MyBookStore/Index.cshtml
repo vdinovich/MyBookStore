@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2><b>Мой книжный магазин</b></h2>
+
+<div>
+    <h4></h4>
+    <p></p>
+    <p></p>
+    @*<p><a href="/MyBookStore/PurchaseList">Список покупок</a></p>*@
+<div class="form-actions no-color">
+    @Html.ActionLink("Список всех покупок", "PurchaseList") |
+    <a href="/MyBookStore/AddBook">Добавить книгу в базу данных</a> |
+    <a href="/MyBookStore/BookList">Изменить данные о книге в базе данных</a>
+</div>  
+    <p></p>
+    <table>
+        <tr class="header">
+            <td><p>Название книги</p></td>
+            <td><p>Автор</p></td>
+            <td><p>Цена</p></td>
+            <td></td>
+        </tr>
+        @foreach (var b in ViewBag.Books)
+        {
+            <tr>
+                <td><p>@b.Name</p></td>
+                <td><p>@b.Author</p></td>
+                <td><p>@b.Price</p></td>
+                <td><p><a href="/MyBookStore/Buy/@b.Id">Купить</a></p></td>
+            </tr>
+        }
+    </table>
+</div>
+

@@ -1,0 +1,46 @@
+﻿@model MyBookStore.Models.Book
+
+@{
+    ViewBag.Title = "DeailsBook";
+}
+
+<h2><b>Детали о книге</b></h2>
+<p></p>
+<p></p>
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Название книги:
+            @*@Html.DisplayNameFor(model => model.Name)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            Автор:
+            @*@Html.DisplayNameFor(model => model.Author)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+
+        <dt>
+            Цена:
+            @*@Html.DisplayNameFor(model => model.Price)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "EditBook", new { id = Model.Id }) |*@
+    @Html.ActionLink("Назад к списку книг", "BookList")
+</p>
