@@ -134,6 +134,7 @@
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\MyBookContext.cs" />
     <Compile Include="Models\Purchase.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +178,7 @@
     <Content Include="Views\MyBookStore\EditBook.cshtml" />
     <Content Include="Views\MyBookStore\DetailsBook.cshtml" />
     <Content Include="Views\MyBookStore\DeleteBook.cshtml" />
+    <Content Include="Views\MyBookStore\SignIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

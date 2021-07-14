@@ -76,9 +76,9 @@ namespace MyBookStore.Controllers
         [HttpGet]
         public ActionResult BookList()
         {
-            using (MyBookContext dbModel = new MyBookContext())
+            using (MyBookContext db = new MyBookContext())
             {
-                return View(dbModel.Books.ToList());
+                return View(db.Books.ToList());
             }
         }
 
@@ -133,8 +133,8 @@ namespace MyBookStore.Controllers
             }
             //return View();
         }
-
-        // GET: Customer/Delete/5
+        //#region BookDelete:
+        // GET: Customer/Delete
         [HttpGet]
         public ActionResult DeleteBook(int id)
         {
@@ -143,8 +143,8 @@ namespace MyBookStore.Controllers
                 return View(db.Books.Where(x => x.Id == id).FirstOrDefault());
             }
         }
-
-        // POST: Customer/Delete/5
+        
+        // POST: Customer/Delete
         [HttpPost]
         public ActionResult DeleteBook(int id, FormCollection collection)
         {
@@ -164,5 +164,35 @@ namespace MyBookStore.Controllers
                 return View();
             }
         }
+      //        SignIn logic
+           [HttpGet]
+           public ActionResult SignIn()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SignIn(User user)
+        {
+            var obj = db.Users.Where(x => x.Login.Equals(user.Login) && x.Password.Equals(user.Password)).FirstOrDefault();
+            if (user.Login == "admin" && user.Password == "admin")
+            {
+                return RedirectToAction("BookList");
+            }
+            else if (obj != null)
+            {
+                return RedirectToAction("Index");
+            }    
+            else
+            {
+                ViewBag.LoginIncorrect = "Ваш логин/пароль были введены неправильно. Попытайтесь еще раз.";
+            }
+            
+            return View(); 
+        }      
+            
+                
     }
 }
+
+
